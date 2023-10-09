@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function foo(...value){
+			    console.log(value);
+			    value.forEach(function(item,index){
+			        console.log(item,index);
+			    });
+			}
+			foo(1,4);
+			
+			function foo2(a,value...){
+			    console.log(value);
+			    value.forEach(function(item,index){
+			        console.log(item,index);
+			    });
+			}
+			foo2(1,4);
+			
+			let arr1=[1,2];
+			let arr2=[2,3,4,5];
+			arr1=[1,...arr2,6];
+			console.log(arr1)
+		</script>
+	</body>
+</html>

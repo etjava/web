@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// let声明的变量只能在let所在的块级中有效
+			// {
+			//     // 定义块级
+			//     let a = 0;
+			//     var b = 1;
+			//     console.log(a);
+			// }
+			
+			// console.log(b);
+			// console.log(a);// 报错 ReferenceError: a is not defined
+
+			// 不能重复声明
+			// let声明的变量不能重复定义 var可多次定义
+			/* {
+			    let a=0;
+			    let a=2;// Identifier 'a' has already been declared
+			    var b=1;
+			    var b=3;
+			    console.log(a);
+			    console.log(b);
+			} */
+			
+			/* // 不存在变量提升
+			for (var i = 0; i < 10; i++) {
+			    setTimeout(function(){
+			        console.log("var 定义的变量 "+i);// 输出十个 10
+			    })
+			}
+			
+			for (let j = 0; j < 10; j++) {
+			    setTimeout(function(){
+			        console.log("let 定义的变量 "+j); // 输出 0123456789
+			    })
+			} */
+			
+			// 不存在变量提升2
+			console.log(a);  //ReferenceError: a is not defined
+			let a = "apple";
+			console.log(b);  //undefined
+			var b = "banana";
+
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 对象的解构赋值
+			let obj={username:"etjava",pwd:"123456"}
+			// 以前的写法
+			/* let username=obj.username;
+			let pwd=obj.pwd;
+			console.log(username,pwd) */
+			// 还可以使用解构赋值
+			// 从obj中解析解构出来 然后对username和pwd进行赋值
+			/* let{username,pwd}=obj;
+			console.log(username,pwd) */
+			// 只解构赋值一个参数
+			/* let{username}=obj;
+			console.log("只解构赋值一个参数 "+username); */
+			/* let{username,age}=obj;
+			console.log("解构时有不存在的变量："+username,age); */
+			
+			// function中的解构赋值
+			/* function func(o){// 以前的写法 直接传入一个对象 使用时使用对象.属性名
+				console.log(o.username,o.pwd);
+			}
+			func(obj); */
+			
+			/* function func({username,pwd}){
+				console.log("解构赋值 "+username,pwd);
+			}
+			func(obj); */
+			
+			// 数组的解构赋值
+			// 以前的写法
+			let arr=[1,2,3,'a','b','c'];
+			/* console.log(arr[3]) */
+			
+			// 解构赋值方式
+			//let[a,b,c,d,e,f]=arr;
+			//console.log(a,b,c,d,e,f);// 1 2 3 a b c
+			//console.log(a);// 1
+			// 在解构赋值时 如果参数不全需要预留出参数的位置
+			let[a,b,,,,f]=arr;
+			console.log(a,b,f);// 1 2 c
+			
+		</script>
+	</body>
+</html>

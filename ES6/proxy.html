@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// proxy 代理可以对目标对象的读取、函数调用等操作进行拦截，然后进行操作处理。它不直接操作对象，
+			//而是像代理模式，通过对象的代理对象进行操作，在进行这些操作时，可以添加一些需要的额外操作
+			
+			
+			// 基本用法
+			// 创建对象
+			let target={name:'Tom',age:12};
+			// 创建代理对象
+			let handler={
+				get(target,name){
+					console.log(name)
+					return target[name]
+				}
+			}
+			// 调用代理对象
+			let pro = new Proxy(target,handler);
+			console.log(pro.name);
+			
+			//、、、、、、、、、、、、、、、、、、、、
+			let target2 ={name:'Tom2',age:13}
+			let handler2={
+				
+			}
+			let pro2 = new Proxy(target2,handler2);
+			console.log("handler为空时" + pro2.name);
+			
+			
+			let target3 ={name:'Tom3',age:13}
+			let handler3={
+				get(target3,name){
+					return target3[name];
+				}
+			}
+			let pro3 = new Proxy(target3,handler3);
+			let obj = Object.create(pro3);// 如果handler为空 操作的还是target原型
+			console.log(obj.name);
+			
+			
+			
+			
+			
+			
+			
+			let target5 = {username:'Andy',password:123}
+
+			let handler5 = {
+				//第一个参数为目标对象，第二个参数为属性名称，
+				//第三个属性为操作所针对的对象（可选参数）
+				get(target5,propKey,receive){
+					// 逻辑判断
+					if(propKey in target5){
+						console.log("success");
+					}else{
+						console.log("error")
+					}
+					// return Object.defineProperty(target5,propKey,receive);
+					return Reflect.get(target, propKey, receive);
+				}
+			}
+			
+			let prop5 = new Proxy(target5,handler5);
+			console.log(prop5);
+			
+			let target6 = {username:'Jack',password:123}
+			let handler6 = {
+				get(target6, propKey, receive){
+					if(propKey in target6){
+						console.log("get success");
+					}else{
+						console.log("get error")
+					}
+					//return Object.defineProperty(target, propKey, receive);
+					return Reflect.get(target6, propKey, receive);
+				},
+				set(target6, propKey, value, receiver){
+					if(propKey=='age'){
+						if(!Number.isInteger(value)){
+							throw new TypeError('The age is not an integer');
+						}else{
+							console.log("set success");
+						}
+					}else{
+						console.log("set success");
+					}
+					return Reflect.set(target6, propKey, value, receiver);
+				}
+			}
+			
+			let pro6 = new Proxy(target6,handler6);
+			pro.age=20;
+			pro.username='Jack';
+			console.log("-----------------------------")
+			console.log(pro6.age);
+			console.log(pro6.username);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function* myGenerator(){
+				console.log('业务逻辑A')
+				yield 'hello'
+				console.log('业务逻辑B')
+				yield 'world'
+			}
+			let mg = myGenerator()
+			// 我们直接调用的话，不会有任何输出；因为里面是个状态机；必须调用next()；
+			//mg.next();
+			//mg.next();
+			// 执行一次next() 指针想下偏移一次，根据yield来作用
+			//console.log(mg.next())
+			//console.log(mg.next())
+			console.log(mg.next().value)
+			console.log(mg.next().value)
+		</script>
+	</body>
+</html>

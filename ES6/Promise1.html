@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// resolve 表示成功状态,reject表示失败状态
+			let promise=new Promise((resolve,reject)=>{
+				console.log('promise初始化 状态 pending');// 同步执行
+				setTimeout(()=>{
+					console.log('使用定时器 模拟异步请求');
+					// 成功状态
+					resolve('异步请求返回，执行成功');// 状态会被改为 fulfilled
+					// 失败状态
+					//reject('请求失败');
+				},1000);
+			});
+			// 调用
+			promise
+				.then((data)=>{// 成功时的回调
+					console.log(data);
+				},
+				(data)=>{
+					// 失败时的回调
+					console.log('失败状态');
+					console.log(data);
+				});
+				
+				
+				// 执行成功调用resolve  执行失败调用reject
+let promise=new Promise((resolve,reject)=>{
+    console.log('promise初始化状态：pending')   // 同步执行
+    $.get('./data.json',{},function(result){
+        console.log('ajax异步操作');
+        if(result.ret){
+            console.log('执行成功')
+            resolve(result.data);
+        }else{
+            console.log('执行失败')
+            reject(result.data);
+        }
+    },'json');
+})
+console.log('代码继续执行')
+ 
+promise
+    .then((data)=>{  // 第一个回调 成功resolve
+        console.log(data)
+    },(data)=>{   // 第二个回调 失败reject
+        console.log(data)
+    }
+)
+		</script>
+	</body>
+</html>

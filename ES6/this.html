@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			let karen="karen";
+			// 箭头函数中的this
+			
+			console.log(this);// [object Window]
+			// 普通函数中的this
+			let fun1=function(){
+				console.log("普通函数中的this ",this);//[object Window]
+			}
+			fun1();
+			
+			// 对象的函数中的this
+			let obj={
+				name:"etjava",
+				age:12,
+				getName(){
+					console.log("对象中的this ",this);//this指代的当前obj对象
+					return this.name;
+				},
+				// 箭头函数中的this
+				getName2:()=>{
+					console.log("箭头函数中的this ",this);// [object Window]
+				}
+			}
+			console.log(obj.getName())
+			console.log(obj.getName2())
+			
+			
+			let btn1=document.getElementById('btn1');
+			let btn2=document.getElementById('btn2');
+		 
+			let person1={
+				name:'jack',
+				getName:function(){
+					btn1.onclick=()=>{
+						console.log(this);
+					}
+				}
+			}
+			person1.getName();
+		 
+			let person2={
+				name:'Marry',
+				getName:function(){
+					btn2.onclick=function(){
+						console.log(this)
+					}
+				}
+			}
+			person2.getName();
+		</script>
+		<button id="btn1">按钮1</button>
+		<button id="btn2">按钮2</button>
+	</body>
+</html>

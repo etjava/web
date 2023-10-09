@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let target = {
+				name:"小明",
+				age: 15
+			}
+			
+			let handler = {
+				has(target,proKey){
+					console.log('handle has');
+					return proKey in target;
+				}
+			}
+			
+			let pro = new Proxy(target,handler);
+			console.log('name' in pro);
+			console.log('sex' in pro);
+		</script>
+	</body>
+</html>

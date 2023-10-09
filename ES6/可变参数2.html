@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function fun(...params){
+				console.log(params);
+				// 遍历数组
+				params.forEach(function(item,index){
+					console.log(item,index);
+				});
+			}
+			fun(1,2,3,4,5,6);
+			
+			// 数组合并
+			let arr1 = [2,3];
+			let arr2 = [1,...arr1,4];// 合并arr1中的内容
+			console.log("arr2="+arr2);
+		</script>
+	</body>
+</html>

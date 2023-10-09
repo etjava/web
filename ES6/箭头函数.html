@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 以前定义匿名函数
+			let fun1=function(){
+				console.log("普通无参匿名函数");
+			}
+			// 调用函数
+			fun1();//普通无参匿名函数
+			
+			// 箭头函数
+			/* let fun2=()=>{
+				console.log("匿名无参的箭头函数");
+			} */
+			// 可以简写 {}里面只有一条语句时 {}可以省略
+			let fun2=()=>console.log("匿名无参的箭头函数");//匿名无参的箭头函数
+			fun2();
+			
+			//带一个参数的箭头函数 如果只有一个参数 ()可以省略
+			let fun3=(a)=>console.log(a);// 12345
+			fun3(12345);
+			// 带多个参数的箭头函数
+			let fun4=(a,b,c)=>console.log(a,b,c);//a d 100
+			fun4("a","d",100);
+			
+			// 只有一条return语句时{}和return都可以省略
+			//let fun5=(a,b)=>{return a+b;}
+			let fun5=(a,b)=>a+b;
+			let res = fun5(1,2);
+			console.log(res);// 3
+		</script>
+	</body>
+</html>

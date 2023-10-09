@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 定义对象
+			let username="etjava";
+			let pwd="123456";
+			// 对象简写1
+			let student={
+				username:username,
+				pwd:pwd
+			}
+			console.log(student.username,student.pwd);//etjava 123456
+			// 对象简写2
+			let student2={
+				username,
+				pwd
+			}
+			console.log(student2.username,student2.pwd);//etjava 123456
+			
+			// 带function的对象简写1
+			let student3={
+				username,
+				pwd,
+				getUserName:function(){
+					return this.username;
+				}
+			}
+			console.log(student3.getUserName())
+			
+			// 带function的对象简写2
+			let student4={
+				username,
+				pwd,
+				getUserName(){
+					return this.username;
+				}
+			}
+			console.log(student4.getUserName())
+		</script>
+	</body>
+</html>
